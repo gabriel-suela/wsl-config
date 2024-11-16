@@ -18,7 +18,6 @@ let
     htop
     yq-go
     k9s
-    tmux
     krew
     go-task
     (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.gke-gcloud-auth-plugin ])
@@ -39,7 +38,6 @@ let
     helmfile
     sops
     sd
-    tmux
     tree
     unzip
     neovim
@@ -61,6 +59,7 @@ in
   imports = [
     nix-index-database.hmModules.nix-index
     ./programs/zsh.nix
+    ./programs/tmux.nix
   ];
 
   home.stateVersion = "22.11";

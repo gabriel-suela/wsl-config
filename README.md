@@ -41,3 +41,8 @@ mv /tmp/configuration ~/configuration
 ```bash
 sudo nixos-rebuild switch --flake ~/configuration
 ```
+
+### Decrypt secrets.json
+```bash
+sops -d -i --gpg "<KEY>" secrets.json
+```
