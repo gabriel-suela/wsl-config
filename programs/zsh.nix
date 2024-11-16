@@ -24,6 +24,7 @@
     alias sopsd="sops --decrypt" 
     alias sopsdi="sops --decrypt --in-place" 
     alias sopsei="sops --encrypt --in-place"
+    alias up="sudo nixos-rebuild switch --flake ~/configuration" 
 
   '';
 }

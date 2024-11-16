@@ -43,6 +43,7 @@
     neovim
     wget
     zip
+    lua-language-server
   ];
 
   stable-packages = with pkgs; [
