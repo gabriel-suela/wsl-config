@@ -3,6 +3,7 @@
   pkgs
 , username
 , nix-index-database
+, lib
 , ...
 }:
 let
@@ -119,6 +120,13 @@ in
     direnv.enable = true;
     direnv.nix-direnv.enable = true;
   };
+
+  home.file.".npmrc".text = lib.generators.toINIWithGlobalSection { } {
+    globalSection = {
+      prefix = "~/.npm";
+    };
+  };
+
 
   programs.git = {
     enable = true;
