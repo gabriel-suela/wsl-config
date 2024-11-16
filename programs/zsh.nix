@@ -3,13 +3,6 @@
   programs = {
     zsh = {
       enable = true;
-      oh-my-zsh = {
-        enable = true;
-        theme = "refined";
-        plugins = [
-          "git"
-        ];
-      };
       enableAutosuggestions = true;
       enableCompletion = true;
       enableSyntaxHighlighting = true;
@@ -20,6 +13,8 @@
     export EDITOR=nvim
     ZSH_THEME="refined"
     export PATH="$HOME/.krew/bin:$PATH"
+
+    eval "$(starship init zsh)"
 
 
     source <(fzf --zsh)
