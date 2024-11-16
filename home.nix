@@ -1,10 +1,11 @@
 {
   # secrets,
-  pkgs,
-  username,
-  nix-index-database,
-  ...
-}: let
+  pkgs
+, username
+, nix-index-database
+, ...
+}:
+let
   unstable-packages = with pkgs.unstable; [
     bat
     bottom
@@ -28,6 +29,7 @@
     gcc
     nodejs
     lazygit
+    lua-language-server
     go
     python311
     python311Packages.pip
@@ -42,27 +44,16 @@
     unzip
     neovim
     wget
+    cargo
     zip
     lua-language-server
   ];
 
   stable-packages = with pkgs; [
     gh
-    just
-    rustup
-    cargo-cache
-    cargo-expand
     mkcert
-    httpie
-    tree-sitter
-    nodePackages.vscode-langservers-extracted
-    nodePackages.yaml-language-server
-    nil
-    alejandra
     deadnix
-    nodePackages.prettier
     shellcheck
-    shfmt
     statix
   ];
 in
@@ -90,6 +81,13 @@ in
       # pkgs.unstable.some-other-package
     ];
 
+  home.file = {
+    ".local/scripts" = {
+      source = ./scripts;
+      recursive = true;
+    };
+  };
+
   programs = {
     home-manager.enable = true;
     nix-index.enable = true;
@@ -116,7 +114,7 @@ in
     lsd.enableAliases = true;
     zoxide.enable = true;
     zoxide.enableFishIntegration = true;
-    zoxide.options = ["--cmd cd"];
+    zoxide.options = [ "--cmd cd" ];
     broot.enable = true;
     broot.enableFishIntegration = true;
     direnv.enable = true;
