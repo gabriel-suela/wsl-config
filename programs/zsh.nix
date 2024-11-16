@@ -13,6 +13,7 @@
     export EDITOR=nvim
     ZSH_THEME="refined"
     export PATH="$HOME/.krew/bin:$PATH"
+    export PATH=$HOME/bin:$HOME/.local/bin:$HOME/.local/scripts:$HOME/.krew/bin:$PATH
 
     eval "$(starship init zsh)"
 
