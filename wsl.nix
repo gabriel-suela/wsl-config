@@ -1,10 +1,9 @@
-{
-  secrets,
-  username,
-  hostname,
-  pkgs,
-  inputs,
-  ...
+{ secrets
+, username
+, hostname
+, pkgs
+, inputs
+, ...
 }: {
   time.timeZone = "America/Sao_Paulo";
 
@@ -66,7 +65,7 @@
   # more information: https://github.com/nix-community/NixOS-WSL/issues/238 and https://github.com/nix-community/NixOS-WSL/issues/294
   systemd.user = {
     paths.vscode-remote-workaround = {
-      wantedBy = ["default.target"];
+      wantedBy = [ "default.target" ];
       pathConfig.PathChanged = "%h/.vscode-server/bin";
     };
     services.vscode-remote-workaround.script = ''
@@ -81,11 +80,11 @@
 
   nix = {
     settings = {
-      trusted-users = [username];
-       access-tokens = [
-         "github.com=${secrets.github_token}"
-      #   "gitlab.com=OAuth2:${secrets.gitlab_token}"
-       ];
+      trusted-users = [ username ];
+      access-tokens = [
+        "github.com=${secrets.github_token}"
+        #   "gitlab.com=OAuth2:${secrets.gitlab_token}"
+      ];
 
       accept-flake-config = true;
       auto-optimise-store = true;
